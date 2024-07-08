@@ -1,0 +1,47 @@
+body{
+    background-image: url(AdobeStock_498108414.jpeg) ;
+}
+
+h1 {
+    color: #007bff; 
+}
+
+h2,h3{
+    border-bottom:1px solid black;
+}
+#character-list {
+    margin-bottom: 20px;
+}
+
+.character-item {
+    cursor: pointer;
+}
+
+.container>p{
+    text-align: center;
+}
+
+.character-item:hover {
+    background-color: #cccccc; 
+}
+
+#classInfo,
+#raceInfo {
+    padding: 20px;
+}
+
+
+.info-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ced4da; 
+    border-radius: 5px;
+    background-color: #f8f9fa; 
+}
+
+.container{
+    background-image: linear-gradient( #fafaf8,#cfcfcb);
+    padding: 20px;
+    border: 2px solid black;
+}
+

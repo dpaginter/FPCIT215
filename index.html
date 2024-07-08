@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project CIT 215</title>
+
+    <!-- Bootstrap StyleSheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- External StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="container container-fluid">
+        <div class="container mt-5">
+            <h1 class="text-center mt-4">D&D Character Archive</h1>
+            <p>Do you have a new campaign coming up but don't want to lose your information? Here is a place for you to store your D&D characters!</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Character List</h2>
+                    <ul id="character-list" class="list-group"></ul>
+                    <button id="add-character-modal-btn" class="btn btn-primary mt-3" data-toggle="modal" data-target="#addCharacterModal">Add Character</button>
+                    <button id="restore-characters-btn" class="btn btn-success mt-3">Restore Deleted Characters</button>
+                </div>
+                <div class="col-md-8">
+                    <h2 style="text-align: right;">Character Menu</h2>
+                    <div id="character-details"></div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- CREATE MODAL -->
+        <div class="modal fade" id="addCharacterModal">
+            <div class="modal-dialog" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Add New Character</h5>
+                        <button type="button" class="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <form id="addCharacterForm">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" >
+                            </div>
+                            <div class="form-group">
+                                <label for="race">Race:</label>
+                                <input type="text" class="form-control" id="race" >
+                            </div>
+                            <div class="form-group">
+                                <label for="class">Class:</label>
+                                <input type="text" class="form-control" id="class" >
+                            </div>
+                            <div class="form-group">
+                                <label for="level">Level:</label>
+                                <input type="number" class="form-control" id="level" >
+                            </div>
+                            <div class="form-group">
+                                <label for="hp">HP:</label>
+                                <input type="number" class="form-control" id="hp" >
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary">Close</button>
+                        <button type="button" class="btn btn-primary" id="add-character-btn">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    
+        <!-- EDIT MODAL -->
+        <div class="modal fade" id="editCharacterModal">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Edit Character</h5>
+                <button type="button" class="close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editCharacterForm">
+                    <div class="form-group">
+                        <label for="editName">Name:</label>
+                        <input type="text" class="form-control" id="editName">
+                    </div>
+                    <div class="form-group">
+                        <label for="editRace">Race:</label>
+                        <input type="text" class="form-control" id="editRace">
+                    </div>
+                    <div class="form-group">
+                        <label for="editClass">Class:</label>
+                        <input type="text" class="form-control" id="editClass">
+                    </div>
+                    <div class="form-group">
+                        <label for="editLevel">Level:</label>
+                        <input type="number" class="form-control" id="editLevel">
+                    </div>
+                    <div class="form-group">
+                        <label for="editHP">HP:</label>
+                        <input type="number" class="form-control" id="editHP">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary">Close</button>
+                <button type="button" class="btn btn-primary" id="save-edit-btn">Save</button>
+            </div>
+        </div>
+    </div>
+        </div>
+        <br>
+
+
+        
+        <!--D&D API-->
+        <div class="container mt-5">
+           <h2>D&D Information</h2>
+           <p>Finding it hard to choose? Here are some options for classes and races you can be in your next campaign!</p>
+           <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Classes</h5>
+                    <div id="classInfo"></div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h5>Races</h5>
+                    <div id="raceInfo"></div>
+                </div>
+                
+            </div>
+        </div>
+      
+    </div>
+
+    <!--JQUERY JS-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+
+    <!--BOOTSTRAP JS-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" defer></script>
+
+    <!--SCRIPT JS-->
+    <script src="script.js" defer></script>
+
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+</body>
+</html>
+
+<!--References:
+https://getbootstrap.com/docs/4.0/components/list-group/
+https://getbootstrap.com/docs/4.0/components/modal/
+https://getbootstrap.com/docs/4.0/components/buttons/
+https://www.w3schools.com/bootstrap/bootstrap_ref_js_button.asp
+https://getbootstrap.com/docs/5.0/getting-started/javascript/
+https://getbootstrap.com/docs/4.0/getting-started/javascript/
+https://stackoverflow.com/questions/46373142/bootstrap-4-modal-with-jquery-and-ajax
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data
+https://jquery.com/
+https://www.dnd5eapi.co/api/
+https://jqueryui.com/dialog/
+https://iu.instructure.com/courses/2214194/pages/whats-ajax-2?module_item_id=31657114
+https://getbootstrap.com/docs/4.0/utilities/spacing/
+https://iu.instructure.com/courses/2214194/pages/removing-and-restyling-items-with-jquery?module_item_id=31657102
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration
+https://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp
+-->
+
+<!--I decided to also use Bootstrap due to taking both CIT 215 and CIT 312 at the same time-->
